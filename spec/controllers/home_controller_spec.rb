@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe HomeController, type: :controller do
+  login_user
+  
   describe "#index" do
     it "responds successfully" do
       get :index

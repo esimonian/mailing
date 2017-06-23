@@ -1,7 +1,6 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
-
+  
   # GET /campaigns
   def index
     @campaigns = Campaign.all

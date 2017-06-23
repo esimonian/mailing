@@ -6,6 +6,11 @@ FactoryGirl.define do
     username {Faker::Internet.user_name}
     password {Faker::Internet.password}
     location "test town, USA"
+
+    factory :admin do
+      admin :true
+    end
+
   end
 
 end
