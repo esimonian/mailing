@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CampaignsController, type: :controller do
-
+RSpec.describe TemplatesController, type: :controller do
   describe "#index" do
     context "as an authenticated user" do
       before do
@@ -33,5 +32,4 @@ RSpec.describe CampaignsController, type: :controller do
       end
     end
   end
-
 end
