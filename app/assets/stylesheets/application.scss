@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+ @import "materialize/components/color";
+
+$primary-color: #3AAFA9 !default;
+$secondary-color: #17252A !default;
+$navbar-font-color: $primary-color;
+
+@import "materialize";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+
+#nav {
+  box-shadow: none;
+}

@@ -1,0 +1,21 @@
+<ul id="dropdown1" class="dropdown-content">
+  <%= render 'devise/menu/registration_items' %>
+  <%= render 'devise/menu/login_items' %>
+  <li class="divider"></li>
+</ul>
+<nav class="white" id="nav">
+  <div class="nav-wrapper container">
+    <%= link_to "Logo", root_path, class: "brand-logo" %>
+    
+    <ul class="right hide-on-med-and-down">
+      <!-- Dropdown Trigger -->
+      <li>
+        <a class="dropdown-button" href="#!" data-activates="dropdown1">
+        <i class="material-icons left">perm_identity</i>
+          <%= current_user.first_name  %>
+          <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
