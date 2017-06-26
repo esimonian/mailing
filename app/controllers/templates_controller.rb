@@ -1,4 +1,5 @@
 class TemplatesController < ApplicationController
+  layout "dashboard"
   before_action :set_template, only: [:show, :edit, :update, :destroy]
 
   # GET /templates

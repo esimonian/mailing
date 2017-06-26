@@ -23,6 +23,59 @@ $navbar-font-color: $primary-color;
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 
+a:hover {
+  color: #2B7a78!important;
+}
+
 #nav {
   box-shadow: none;
+}
+
+.sidebar-wrapper li a {
+  flex-direction: column;
+  padding-bottom: 2em;
+  color: #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.current {
+  color: $primary-color!important;
+}
+
+.square-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+.square-icon {
+  display: flex;
+  flex-direction: column;
+  border:  solid 1px $primary-color;
+  align-items: center;
+  width: 32%;
+  padding: 2em  0;
+  a {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color;
+  }
+}
+
+@media only screen and (max-width: 600px)   {
+  .square-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .square-icon {
+    margin-bottom: 1em;
+    width: 50%;
+  }
+
+  h2 {
+    font-size: 2.5em;
+    text-align: center;
+  }
 }

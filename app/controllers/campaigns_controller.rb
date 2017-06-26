@@ -1,4 +1,5 @@
 class CampaignsController < ApplicationController
+  layout "dashboard"
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
   
   # GET /campaigns

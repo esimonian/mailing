@@ -1,5 +1,23 @@
-<div class="container">
-  <h1>Welcome to Dashboard</h1>
+<h2>Welcome to Dashboard</h2>
 
+<div class="square-wrapper">
+  <div class="square-icon">
+    <%= link_to new_campaign_path do %>
+      <i class="medium material-icons">markunread_mailbox</i>
+      Create Campaign
+    <% end %>
+  </div>
+  <div class="square-icon">
+    <%= link_to new_template_path do %>
+      <i class="medium material-icons">web</i>
+      Create Template
+    <% end %>
+  </div>
+  <div class="square-icon">
+    <i class="medium material-icons">view_list</i>
+    Lists
+  </div>
+  
 </div>
+
 
