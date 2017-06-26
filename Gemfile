@@ -35,6 +35,12 @@ gem "paperclip"
 gem 'materialize-sass'
 gem 'jquery-rails'
 
+# Forms
+gem 'simple_form'
+
+# Address fields
+gem 'jt-rails-address'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :contacts
+  resources :lists
   resources :templates
   resources :campaigns
   devise_for :users, controllers: { registrations: 'registrations' }
