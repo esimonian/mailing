@@ -23,7 +23,7 @@ class CampaignsController < ApplicationController
   # POST /campaigns
   def create
     @campaign = Campaign.new(campaign_params)
-
+    @campaign.user_id = current_user.id if current_user
     if @campaign.save
       redirect_to @campaign, notice: 'Campaign was successfully created.'
     else

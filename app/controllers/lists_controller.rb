@@ -16,6 +16,7 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
+    @contacts = Contact.all
   end
 
   # GET /lists/1/edit
@@ -28,7 +29,7 @@ class ListsController < ApplicationController
     @list= List.new(list_params)
 
     respond_to do |format|
-      if @List.save
+      if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render :show, status: :created, location: @list }
       else
@@ -70,7 +71,7 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.fetch(:list, {})
+      params.fetch(:list).permit(:title, :contact_ids)
     end
 end
 
