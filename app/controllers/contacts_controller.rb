@@ -70,6 +70,21 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white contact through.
     def contact_params
-      params.fetch(:contact, {})
+      params.fetch(:contact).permit(:first_name, :last_name, :email, :address, 
+                                    :address_formatted_address,
+                                    :address_street_number,
+                                    :address_street_name,
+                                    :address_street,
+                                    :address_city,
+                                    :address_zip_code,
+                                    :address_department,
+                                    :address_department_code,
+                                    :address_state,
+                                    :address_state_code,
+                                    :address_country,
+                                    :address_country_code,
+                                    :address_lat,
+                                    :address_lng,
+                                    )
     end
 end
