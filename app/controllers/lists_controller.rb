@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-  class listsController < ApplicationController
   layout "dashboard"
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
@@ -75,4 +74,3 @@ class ListsController < ApplicationController
     end
 end
 
-end
