@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * This isifest  a manfile that'll be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
@@ -23,6 +23,60 @@ $link-color: $primary-color;
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 
+.full-background {
+  background-color: $primary-color;
+}
+
+.show-image-row {
+  h3 {
+    margin-top: 0;
+  }
+}
+
+
+.show-image {
+  img {
+    margin-top: -50%;
+    max-width: 100%;
+  }
+}
+.show-spacer {
+  height: 11em;
+}
+
+.back-btn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: white;
+  display: flex;
+}
+/*
+.show-inner-wrapper {
+  padding: 7em 3em 5em 3em;
+}
+.show-nav {
+  background-color: #2B7a78;
+}
+
+
+
+.show-title {
+  padding-left: 30%;
+}
+
+.show-image {
+  transform: translate(0, -50%);
+  img {
+    max-width: 100%;
+  }
+}
+
+
+.show-details{
+  transform: translate(0, -100px);
+}
+*/
 a:hover {
   color: #2B7a78!important;
 }

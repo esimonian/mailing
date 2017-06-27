@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mailing</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="full-background">
+    <nav>
+      <div class="nav-wrapper show-nav container">
+        <%= link_to :back do %>
+        <button class="back-btn"><i class="material-icons">arrow_back</i><span>Back</span></button>
+        <% end %> 
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+      
+  </body>
+
+  <script>
+    function showImage() {
+      var image = $("#show-image")
+      var imageHeight = image.height() * 0.5
+      var spacer = $(".show-spacer")
+
+      image.css("margin-top", -imageHeight )
+      spacer.height(imageHeight)
+    }
+    $(document).ready(function() {
+      
+      showImage();
+    });
+    $( window ).resize(function() {
+      showImage();
+    });
+  </script>
+</html>

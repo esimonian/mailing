@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-   layout "dashboard"
+  layout "dashboard"
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /contacts

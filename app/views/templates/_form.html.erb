@@ -10,15 +10,13 @@
       </ul>
     </div>
   <% end %>
-
   <div class="actions">
-
+  
     <%= form.input :name %>
+    
     <div class="fallback">
       <%= form.file_field :image %>
     </div>
-    
-    <br>
-    <%= form.submit %>
+    <%= form.button :submit, class: "waves-effect waves-light teal lighten-1"  %>
   </div>
 <% end %>
