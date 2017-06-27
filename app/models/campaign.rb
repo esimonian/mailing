@@ -1,10 +1,9 @@
 class Campaign < ApplicationRecord
   
-  has_one :template
-  has_one :user
-
   belongs_to :template
   belongs_to :user
 
-  validates_presence_of :user, :template, :title, :description, :status
+  validates_presence_of :user, :template_id, :title, :description
+
+  enum status: %w(draft published)
 end

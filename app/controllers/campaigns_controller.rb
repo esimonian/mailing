@@ -1,6 +1,7 @@
 class CampaignsController < ApplicationController
   layout "dashboard"
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_collections, only: [:edit, :update, :new, :create]
   
   # GET /campaigns
   def index
@@ -24,6 +25,7 @@ class CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(campaign_params)
     @campaign.user_id = current_user.id if current_user
+    @campaign.draft!
     if @campaign.save
       redirect_to @campaign, notice: 'Campaign was successfully created.'
     else
@@ -54,6 +56,10 @@ class CampaignsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def campaign_params
-      params.require(:campaign).permit(:title, :description, :status)
+      params.require(:campaign).permit(:title, :description, :status, :template_id)
+    end
+
+    def set_select_collections
+      @templates = current_user.templates
     end
 end

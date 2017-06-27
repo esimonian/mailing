@@ -19,7 +19,9 @@
 
 $( document ).ready(function(){
    $(".button-collapse").sideNav();
+   console.log($('select'))
    $('select').material_select();
+   
 })
 
 // This function is call when Google Maps is loaded

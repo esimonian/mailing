@@ -1,4 +1,4 @@
-<%= form_with(model: campaign, local: true) do |form| %>
+<%= simple_form_for @campaign do |form| %>
   <% if campaign.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
@@ -21,10 +21,8 @@
     <%= form.text_field :description, id: :campaign_description %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :campaign_status %>
-  </div>
+  <%= form.collection_radio_buttons :template_id, @templates, :id, 
+          :name, :prompt => "Select a Template" %>
 
   <div class="actions">
     <%= form.submit %>

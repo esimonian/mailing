@@ -11,6 +11,7 @@
 
   <tbody>
     <% @templates.each do |template| %>
+    <%= image_tag @template.image.url(:medium) %>
       <tr>
         <td><%= link_to 'Show', template %></td>
         <td><%= link_to 'Edit', edit_template_path(template) %></td>

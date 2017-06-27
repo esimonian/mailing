@@ -12,7 +12,11 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @campaign.status %>
+  <% if @campaign.published? %>
+    Published
+    <% else %>
+    Draft
+    <% end %>
 </p>
 
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |

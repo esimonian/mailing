@@ -71,6 +71,6 @@ class TemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def template_params
-      params.fetch(:template, {})
+      params.fetch(:template).permit(:image, :name)
     end
 end
