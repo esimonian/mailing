@@ -15,8 +15,12 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   def new
-    @list = List.new
-    @contacts = Contact.all
+    if Contact.all.length == 0
+      flash[:notice] = "Please add some contacts first"  
+      redirect_to new_contact_path 
+    else
+      @list = List.new
+    end
   end
 
   # GET /lists/1/edit
@@ -72,6 +76,10 @@ class ListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
       params.fetch(:list).permit(:title, :contact_ids)
+    end
+
+    def set_select_collections
+      @contacts = current_user.contacts
     end
 end
 

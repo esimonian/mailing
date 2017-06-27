@@ -2,25 +2,30 @@
 
 <h1>Templates</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
+  <div class="col s12 m6">
     <% @templates.each do |template| %>
-    <%= image_tag @template.image.url(:medium) %>
-      <tr>
-        <td><%= link_to 'Show', template %></td>
-        <td><%= link_to 'Edit', edit_template_path(template) %></td>
-        <td><%= link_to 'Destroy', template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="card">
+        <div class="card-image">
+          <%= image_tag template.image.url(:medium) %>
+          <span class="card-title"></span>
+          
+        </div>
+        <div class="card-content">
+          <p> <%= template.name %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to edit_template_path(template) do %>
+            <i class="material-icons teal-text lighten-1">mode_edit</i>
+          <% end %>
+          <%= link_to template, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="material-icons red-text right">delete</i>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>
 
-<br>
 
 <%= link_to 'New Template', new_template_path %>

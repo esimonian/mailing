@@ -25,7 +25,9 @@
     <% end %>
   </tbody>
 </table>
-
+<%= link_to template, method: :publish, class: "btn-floating halfway-fab waves-effect waves-light teal lighten-1 ", data: { confirm: 'Are you sure?' } do %>
+            <i class="material-icons">done</i>
+          <% end %>
 <br>
 
 <%= link_to 'New Campaign', new_campaign_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626224915) do
+ActiveRecord::Schema.define(version: 20170626224510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 20170626224915) do
     t.float "address_lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "contacts_lists", force: :cascade do |t|
@@ -102,6 +100,5 @@ ActiveRecord::Schema.define(version: 20170626224915) do
 
   add_foreign_key "campaigns", "templates"
   add_foreign_key "campaigns", "users"
-  add_foreign_key "contacts", "users"
   add_foreign_key "templates", "users"
 end

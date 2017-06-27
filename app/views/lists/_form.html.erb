@@ -1,0 +1,15 @@
+<%= simple_form_for @list do |f| %>
+
+  <div class="input-field">
+    <%= f.input :title %>
+  </div>
+  
+  <div class="col s12">
+    <%= f.collection_check_boxes :contacts, @contacts, :id, 
+        :address_formatted_address, :prompt => "Select a Contact",
+        multiple: true %>
+  </div>
+  <div class="input-field">
+    <%= f.button :submit %>
+  </div>
+<% end %>

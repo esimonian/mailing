@@ -1,6 +1,7 @@
 class TemplatesController < ApplicationController
   layout "dashboard"
   before_action :set_template, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_collections, only: [:edit, :update, :new, :create]
 
   # GET /templates
   # GET /templates.json
@@ -72,5 +73,9 @@ class TemplatesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def template_params
       params.fetch(:template).permit(:image, :name)
+    end
+
+    def set_select_collections
+      @templates = current_user.templates
     end
 end
