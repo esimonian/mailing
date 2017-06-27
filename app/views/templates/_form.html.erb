@@ -1,4 +1,4 @@
-<%= simple_form_for @template do |form| %>
+<%= simple_form_for @template, html: { multipart: true, class: "dropzone" } do |form| %>
   <% if template.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(template.errors.count, "error") %> prohibited this template from being saved:</h2>
@@ -14,7 +14,11 @@
   <div class="actions">
 
     <%= form.input :name %>
-    <%= form.input :image, as: :file %>
+    <div class="fallback">
+      <%= form.file_field :image %>
+    </div>
+    
+    <br>
     <%= form.submit %>
   </div>
 <% end %>
