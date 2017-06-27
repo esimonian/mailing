@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
   layout "dashboard"
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_select_collections, only: [:edit, :update, :new, :create]
 
   # GET /lists
   # GET /lists.json
@@ -31,7 +32,7 @@ class ListsController < ApplicationController
   # POST /lists.json
   def create
     @list= List.new(list_params)
-
+    @list.user_id = current_user.id if current_user
     respond_to do |format|
       if @list.save
         format.html { redirect_to @list, notice: 'List was successfully created.' }
