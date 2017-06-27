@@ -1,3 +1,90 @@
 // Place all the styles related to the Contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: "Gotham";
+}
+
+$xs_only: "screen and (max-width: 599px)";
+$sm: "screen and (min-width: 600px)";
+$break-xs: 599px;
+$break-s: 600px;
+
+$light_grey_bg: #fafafa;
+$light_grey_border: #ddd;
+  
+#table_container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+    
+  thead {
+    visibility: hidden;
+    display:none;
+    background: $light_grey_bg;
+    @media screen and (min-width: $break-s)  {
+      visibility: visible;
+      display: table-header-group;
+    }
+  }
+  
+  tr {
+    border: 1px solid $light_grey_border;
+    border-bottom: 2px solid $light_grey_border;
+    padding: 5px;
+    margin-bottom: 10px;
+    display: block;
+    @media screen and (min-width: $break-s)  { 
+      display: table-row;
+      border-bottom-width: 1px;
+      margin-bottom: 0;
+      
+      &:nth-child(even) {
+        background: $light_grey_bg;
+      }
+    }
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+    
+  td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    border-bottom: 1px dotted $light_grey_border;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+      
+    @media screen and (min-width: $break-s)  {
+      display: table-cell;
+      text-align: left;
+      font-size: 14px;
+      border-bottom: none;
+    }
+  }
+    
+  td:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    @media screen and (min-width: $break-s)  {
+      content: "";
+      display: none;
+    }
+  }
+}

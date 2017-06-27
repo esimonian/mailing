@@ -1,25 +1,34 @@
 <h1>Contacts</h1>
 
 <div class="row">
-  <div class="col s12 m6">
-    <% @contacts.each do |contact|  %>
-      <div class="card">
-        <div class="card-content">
-        <span class="card-title"><%= contact.first_name%></span>
-          <p> <%= contact.address_formatted_address%></p>
-        </div>
-        <div class="card-action">
-          <%= link_to edit_contact_path(contact) do %>
-            <i class="material-icons teal-text lighten-1">mode_edit</i>
-          <% end %>
-          <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="material-icons red-text right">delete</i>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
-  </div>
+  <% @contacts.each do |contact|  %>
+    <div class="col s12 m6">
+      <% link_to contact_path(contact) do %>
+        <div class="card">
+          <div class="card-content">
+          <span class="card-title"><%= contact.first_name%></span>
+            <p> <%= contact.address_formatted_address%></p>
+          </div>
+          <div class="card-action">
+            <%= link_to edit_contact_path(contact) do %>
+              <i class="material-icons teal-text lighten-1">mode_edit</i>
+            <% end %>
+            <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="material-icons red-text right">delete</i>
+            <% end %>
+          </div>
+        </div> 
+      <% end %>  
+    </div>
+  <% end %>
 </div>
+
+<%= content_tag :div,
+  id: "table_container",
+  data: {
+    contacts: @contacts
+}.to_json do %>
+<% end %>
 
 
 <%= link_to 'New contact', new_contact_path %>

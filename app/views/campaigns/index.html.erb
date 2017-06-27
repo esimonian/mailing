@@ -3,8 +3,8 @@
 <h1>Campaigns</h1>
 
 <div class="row">
-  <div class="col s12 m6">
-    <% @campaigns.each do |campaign| %>
+  <% @campaigns.each do |campaign| %>
+    <div class="col s12 m6">
       <%= link_to campaign_path(campaign) do %>
         <div class="card">
           <div class="card-image">
@@ -27,9 +27,9 @@
             <% end %>
           </div>
         </div>
-      <% end %>
-    <% end %>
-  </div>
+      <% end %>  
+    </div>
+  <% end %>
 </div>
           
 <br>
