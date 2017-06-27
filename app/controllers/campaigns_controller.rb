@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   layout "dashboard"
-  layout "show", only: [:show]
   
+
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
   before_action :set_select_collections, only: [:edit, :update, :new, :create]
   
@@ -12,6 +12,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1
   def show
+    render layout: "show"
   end
 
   # GET /campaigns/new
