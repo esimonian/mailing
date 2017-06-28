@@ -42,7 +42,7 @@
               <ul class="flow-text">
                 <li><strong>Lists:</strong></li>
                 <% @campaign.lists.each do |list| %>
-                  <li><%= list.title %></li>
+                  <li><%= link_to list.title, list_path(list) %></li>
                 <% end %>
               </ul>
             </div>

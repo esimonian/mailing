@@ -1,11 +1,34 @@
 <h1>Contacts</h1>
 
-<%= content_tag :div,
+<table id="table_container" >
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Add to List</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @contacts.each do |contact| %>
+    <tr>
+      <td data-label="Name"><%= contact.name %></td>
+      <td data-label="Email"><%= contact.email %></td>
+      <td data-label="Amount"><%= contact.address_formatted_address %></td>
+      <td data-label="Period">*add drop down box</td>
+    </tr>
+  <% end %>
+    
+  </tbody>
+</table>
+
+<%#= content_tag :div,
   id: "table_container",
   data: {
     contacts: @contacts
 }.to_json do %>
-<% end %>
+
 
 
 <%= link_to 'New contact', new_contact_path %>

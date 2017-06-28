@@ -12,7 +12,6 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1
   def show
-    render layout: "show"
   end
 
   # GET /campaigns/new
@@ -59,7 +58,7 @@ class CampaignsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def campaign_params
-      params.require(:campaign).permit(:title, :description, :status, :template_id)
+      params.require(:campaign).permit(:title, :description, :status, :template_id, :list_ids => [])
     end
 
     def set_select_collections
