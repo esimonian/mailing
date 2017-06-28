@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
   layout "dashboard"
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_select_collections, only: [:index, :edit, :update, :new, :create]
   # GET /contacts
   # GET /contacts.json
   def index
@@ -66,6 +66,10 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def set_select_collections
+      @lists = current_user.lists
     end
 
     # Never trust parameters from the scary internet, only allow the white contact through.

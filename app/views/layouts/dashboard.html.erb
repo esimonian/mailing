@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  %>
 
   <body>
     <%= render "layouts/navbar" %>
@@ -29,10 +29,13 @@
     $(document).ready(function() {
       $(".button-collapse").sideNav();
       $('select').material_select();
+      jQuery(".best_in_place").best_in_place();
     });
+
     <% flash.each do |key, value| %>
       Materialize.toast("<%= value %>", 4000)
     <% end %>
+    
     Dropzone.autoDiscover = false;
 
     // grap our upload form by its id

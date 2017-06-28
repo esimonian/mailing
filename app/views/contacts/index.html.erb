@@ -3,20 +3,22 @@
 <table id="table_container" >
   <thead>
     <tr>
-      <th>Name</th>
+      <th>First Name</th>
+      <th>Last Name</th>
       <th>Email</th>
       <th>Address</th>
-      <th>Add to List</th>
     </tr>
   </thead>
   <tbody>
 
   <% @contacts.each do |contact| %>
     <tr>
-      <td data-label="Name"><%= contact.name %></td>
-      <td data-label="Email"><%= contact.email %></td>
-      <td data-label="Amount"><%= contact.address_formatted_address %></td>
-      <td data-label="Period">*add drop down box</td>
+      <td data-label="First Name"><%= best_in_place contact, :first_name, :as => :input %></td>
+      <td data-label="Last Name"><%= best_in_place contact, :last_name, :as => :input %></td>
+      <td data-label="Email"><%= best_in_place contact, :email, :as => :input %></td>
+      <td data-label="Address">
+        <%= contact.address_formatted_address %>
+      </td>
     </tr>
   <% end %>
     

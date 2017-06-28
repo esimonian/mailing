@@ -37,7 +37,7 @@ gem 'jquery-rails'
 
 # Forms
 gem 'simple_form'
-gem 'enum_help'
+gem 'best_in_place'
 
 # Address fields
 gem 'jt-rails-address'
