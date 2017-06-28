@@ -35,6 +35,7 @@ gem 'envyable'
 # Styling
 gem 'materialize-sass'
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 
 # Forms
 gem 'simple_form'

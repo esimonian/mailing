@@ -26,7 +26,8 @@
    
   </body>
   <script>
-    $(window).load.ready(function() {
+    $(document).on('load', function() {
+      console.log("turbo")
       $(".button-collapse").sideNav();
       $('select').material_select();
       jQuery(".best_in_place").best_in_place();

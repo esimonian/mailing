@@ -3,6 +3,7 @@
   <head>
     <title>Mailing</title>
     <meta name="viewport" content="width=device-width" />
+    <meta name="turbolinks-cache-control" content="no-cache">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -59,7 +60,7 @@
    
   </body>
   <script>
-    $(document).ready(function() {
+    $(document).on('ready page:change', function() {
 
       $(".button-collapse").sideNav();
       $('select').material_select();

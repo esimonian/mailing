@@ -11,11 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery
+//= require jquery3
+//= require jquery_ujs
+//= require jquery.turbolinks
 //= require best_in_place
-//= require turbolinks
 //= require materialize
 //= require jt_address
+//= require turbolinks
 //= require_tree .
 
 // This function is call when Google Maps is loaded
