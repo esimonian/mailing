@@ -20,9 +20,17 @@
     <%= form.label :description %>
     <%= form.text_field :description, id: :campaign_description %>
   </div>
-
-  <%= form.collection_radio_buttons :template_id, @templates, :id, 
+  <p>
+    <label for="template_id">Please select a template</label><br>
+    <%= form.collection_radio_buttons :template_id, @templates, :id, 
           :name, :prompt => "Select a Template" %>
+  </p>
+  <p>
+    <%= form.collection_check_boxes :list_ids, @lists, :id, 
+          :title, :prompt => "Select a List" %>
+  </p>
+  
+
 
   <div class="actions">
     <%= form.submit %>

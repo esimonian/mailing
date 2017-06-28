@@ -1,4 +1,5 @@
 class Contact < ApplicationRecord
   has_address :address
-  has_and_belongs_to_many :lists, join_table: "contacts_lists"
+  has_many :contact_lists
+  has_many :lists, through: :contact_lists
 end

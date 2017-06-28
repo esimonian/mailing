@@ -12,6 +12,7 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
+    render layout: "contacts"
   end
 
   # GET /lists/new
@@ -76,7 +77,7 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.fetch(:list).permit(:title, :contact_ids)
+      params.fetch(:list).permit(:title, :contact_ids => [])
     end
 
     def set_select_collections

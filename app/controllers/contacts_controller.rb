@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  layout "dashboard"
+  layout "contacts"
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /contacts
@@ -28,7 +28,7 @@ class ContactsController < ApplicationController
     @contact= Contact.new(contact_params)
     @contact.user_id = current_user.id if current_user
     respond_to do |format|
-      if @contact.save
+      if @contact.save!
         format.html { redirect_to @contact, notice: 'contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else

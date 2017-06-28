@@ -39,7 +39,12 @@
           <div class="row">
             <div class="col 12 show-details">
               <p class="flow-text"><%= @campaign.description %></p>
-              <p class="flow-text"><strong>Lists:</strong></p>
+              <ul class="flow-text">
+                <li><strong>Lists:</strong></li>
+                <% @campaign.lists.each do |list| %>
+                  <li><%= list.title %></li>
+                <% end %>
+              </ul>
             </div>
           </div>
         </div>

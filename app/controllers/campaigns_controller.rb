@@ -64,5 +64,6 @@ class CampaignsController < ApplicationController
 
     def set_select_collections
       @templates = current_user.templates
+      @lists = current_user.lists
     end
 end

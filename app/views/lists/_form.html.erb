@@ -3,12 +3,15 @@
   <div class="input-field">
     <%= f.input :title %>
   </div>
-  
-  <div class="col s12">
-    <%= f.collection_check_boxes :contacts, @contacts, :id, 
-        :address_formatted_address, :prompt => "Select a Contact",
-        multiple: true %>
-  </div>
+
+  <%= f.association :contacts,
+                    as: :check_boxes,
+                    label_method: :first_name,
+                    :label => "Select some contacts",
+                    :wrapper => :inline_checkbox
+
+  %>
+
   <div class="input-field">
     <%= f.button :submit, class: "waves-effect waves-light teal lighten-1" %>
   </div>

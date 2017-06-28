@@ -48,6 +48,15 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
     b.use :error, wrap_with: { tag: :span, class: :error }
 
+    config.wrappers :inline_checkbox, :tag => 'div', :class => 'control-group', :error_class => 'error' do |b|
+      b.use :html5
+      b.wrapper :tag => 'div', :class => 'controls' do |ba|
+        ba.use :label_input, :wrap_with => { :class => 'checkbox inline' }
+        ba.use :error, :wrap_with => { :tag => 'span', :class => 'help-inline' }
+        ba.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
+      end
+    end
+
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
     # use the component :full_error, like:
@@ -62,7 +71,7 @@ SimpleForm.setup do |config|
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
   #   nested: label > input
-  config.boolean_style = :nested
+  config.boolean_style = :inline
 
   # Default class for buttons
   config.button_class = 'btn'
@@ -95,7 +104,7 @@ SimpleForm.setup do |config|
 
   # You can wrap each item in a collection of radio/check boxes with a tag,
   # defaulting to :span.
-  # config.item_wrapper_tag = :span
+  config.item_wrapper_tag = :p
 
   # You can define a class to use in all item wrappers. Defaulting to none.
   # config.item_wrapper_class = nil

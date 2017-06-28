@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627025042) do
+ActiveRecord::Schema.define(version: 20170628015539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campaign_lists", force: :cascade do |t|
+    t.integer "campaign_id"
+    t.integer "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
@@ -23,8 +30,17 @@ ActiveRecord::Schema.define(version: 20170627025042) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "template_id"
+    t.bigint "list_id"
+    t.index ["list_id"], name: "index_campaigns_on_list_id"
     t.index ["template_id"], name: "index_campaigns_on_template_id"
     t.index ["user_id"], name: "index_campaigns_on_user_id"
+  end
+
+  create_table "contact_lists", force: :cascade do |t|
+    t.integer "contact_id"
+    t.integer "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -49,13 +65,6 @@ ActiveRecord::Schema.define(version: 20170627025042) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
-  end
-
-  create_table "contacts_lists", force: :cascade do |t|
-    t.bigint "contact_id"
-    t.bigint "list_id"
-    t.index ["contact_id"], name: "index_contacts_lists_on_contact_id"
-    t.index ["list_id"], name: "index_contacts_lists_on_list_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -100,6 +109,7 @@ ActiveRecord::Schema.define(version: 20170627025042) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "campaigns", "lists"
   add_foreign_key "campaigns", "templates"
   add_foreign_key "campaigns", "users"
   add_foreign_key "contacts", "users"
