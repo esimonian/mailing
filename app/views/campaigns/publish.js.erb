@@ -1,0 +1,5 @@
+<% if @campaign.recieved? == true %>
+    $("#campaign-icon").html('done')
+<% else %>
+    $("#campaign-icon").html('send')
+<% end %>

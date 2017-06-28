@@ -4,4 +4,12 @@
     contacts: @list.contacts
 }.to_json do %>
 <% end %>
+<p>
+  <%= link_to edit_list_path(@list) do %>
+  <i class="material-icons teal-text lighten-1">mode_edit</i>
+  <% end %>
+  <%= link_to @list, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="material-icons red-text right">delete</i>
+  <% end %>
 
+</p>

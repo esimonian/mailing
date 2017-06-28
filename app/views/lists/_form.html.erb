@@ -3,17 +3,12 @@
   <div class="input-field">
     <%= f.input :title %>
   </div>
-  <label for="template_id">Please select a List </label><br>
+  <p>
+    <label for="contact_id">Please Some Contacts</label><br>
   <%= f.collection_check_boxes :contact_ids, @contacts, :id, 
-        :first_name, :prompt => "Select Contacts" %>
+        :name, :prompt => "Select Contacts", :wrapper => :inline_checkbox %>
+  </p>
 
-  <%#= f.association :contact_ids,
-                    as: :check_boxes,
-                    label_method: :first_name,
-                    :label => "Select some contacts",
-                    :wrapper => :inline_checkbox
-
-  %>
 
   <div class="input-field">
     <%= f.button :submit, class: "waves-effect waves-light teal lighten-1" %>

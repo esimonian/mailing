@@ -10,20 +10,28 @@
           <div class="card-image">
             <%= image_tag campaign.template.image.url(:medium) %>
             <span class="card-title"></span>
-            <%= link_to campaign, method: :publish, class: "btn-floating halfway-fab waves-effect waves-light teal lighten-1 ", data: { confirm: 'Are you sure?' } do %>
-              <i class="material-icons">done</i>
-            <% end %>
           </div>
           <div class="card-content">
             <p> <%= campaign.title %></p>
             
           </div>
           <div class="card-action">
-            <%= link_to edit_campaign_path(campaign) do %>
-              <i class="material-icons teal-text lighten-1">mode_edit</i>
-            <% end %>
-            <%= link_to campaign, method: :delete, data: { confirm: 'Publish this campaign?' } do %>
-              <i class="material-icons red-text right">delete</i>
+            <% if current_user.admin %>
+              <a class="left" onclick="Materialize.toast('Printing', 4000)">
+               <i class="material-icons teal-text lighten-1 left">print</i>
+              </a>
+
+              <a class="" onclick="Materialize.toast('Campaign closed', 4000)">
+                <i class="material-icons red-text right">not_interested</i>
+              </a>
+
+            <% else %>
+              <%= link_to edit_campaign_path(campaign) do %>
+                <i class="material-icons teal-text lighten-1">mode_edit</i>
+              <% end %>
+              <%= link_to campaign, method: :delete, data: { confirm: 'Publish this campaign?' } do %>
+                <i class="material-icons red-text right">delete</i>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -34,4 +42,4 @@
           
 <br>
 
-<%= link_to 'New Campaign', new_campaign_path %>
+<%= link_to 'New Campaign', new_campaign_path, class: "btn waves-effect waves-light teal lighten-1" %>

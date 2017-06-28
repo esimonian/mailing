@@ -5,28 +5,31 @@
       Dashboard
     <% end %>
   </li>
+    
   <li class="valign-wrapper">
     <%= link_to campaigns_path, class: cp(campaigns_path) do %>
       <i class="medium material-icons">markunread_mailbox</i>
       Campaigns
     <% end %>
   </li>
-  <li class="valign-wrapper">
-    <%= link_to templates_path, class: cp(templates_path) do %>
-      <i class="medium material-icons">web</i>
-      Templates
-    <% end %>
-  </li>
-  <li class="valign-wrapper">
-    <%= link_to lists_path, class: cp(lists_path) do %>
-      <i class="medium material-icons">view_list</i>
-      Lists
-    <% end %>
-  </li>
-  <li class="valign-wrapper">
-    <%= link_to contacts_path, class: cp(contacts_path) do %>
-      <i class="medium material-icons">contacts</i>
-      Contacts
-    <% end %>
-  </li>
+  <% unless current_user.admin %>
+    <li class="valign-wrapper">
+      <%= link_to templates_path, class: cp(templates_path) do %>
+        <i class="medium material-icons">web</i>
+        Templates
+      <% end %>
+    </li>
+    <li class="valign-wrapper">
+      <%= link_to lists_path, class: cp(lists_path) do %>
+        <i class="medium material-icons">view_list</i>
+        Lists
+      <% end %>
+    </li>
+    <li class="valign-wrapper">
+      <%= link_to contacts_path, class: cp(contacts_path) do %>
+        <i class="medium material-icons">contacts</i>
+        Contacts
+      <% end %>
+    </li>
+  <% end %>
 </ul>

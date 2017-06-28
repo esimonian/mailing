@@ -9,7 +9,16 @@
           <span class="card-half-image">
             
           </span>
-          <a class="btn-floating halfway-fab waves-effect waves-light teal lighten-1"><i class="material-icons">done</i></a>
+          <% if @campaign.draft? %>
+            <%= link_to(publish_campaign_path(@campaign), :class => "btn-floating halfway-fab waves-effect waves-light teal lighten-1", :method => :patch, remote: true, :confirm => "Sure?") do %>     
+                <i class="material-icons" id="campaign-icon">send</i>
+            <% end %>
+          <% else %>
+              <button disabled class="btn-floating halfway-fab waves-effect waves-light teal lighten-1">
+                <i class="material-icons" id="campaign-icon">done</i>
+              </button>
+          <% end %>
+
           <div>
             
           </div>
@@ -23,11 +32,7 @@
               <h3><%= @campaign.title %></h3>
               <p class="flow-text">
                 <strong>Status:</strong>
-                <% if @campaign.published? %>
-                  Published
-                  <% else %>
-                  Draft
-                  <% end %>
+                <%= @campaign.status %>
               </p>
               <p class="flow-text">
                 <strong>Template:</strong>
@@ -49,12 +54,22 @@
           </div>
         </div>
         <div class="card-action">
-          <%= link_to edit_campaign_path(@campaign) do %>
-            <i class="material-icons teal-text lighten-1">mode_edit</i>
+          <% if current_user.admin %>
+            <%= link_to edit_campaign_path(@campaign) do %>
+              <i class="material-icons teal-text lighten-1">print</i>
+            <% end %>
+            <%= link_to @campaign, method: :delete, data: { confirm: 'Publish this campaign?' } do %>
+              <i class="material-icons red-text right">not_interested</i>
+            <% end %>
+          <% else %>
+            <%= link_to edit_campaign_path(@campaign) do %>
+              <i class="material-icons teal-text lighten-1">mode_edit</i>
+            <% end %>
+            <%= link_to @campaign, method: :delete, data: { confirm: 'Publish this campaign?' } do %>
+              <i class="material-icons red-text right">delete</i>
+            <% end %>
           <% end %>
-          <%= link_to @campaign, method: :delete, data: { confirm: 'Publish this campaign?' } do %>
-            <i class="material-icons red-text right">delete</i>
-          <% end %>
+          
         </div>
       </div>    
       </div>

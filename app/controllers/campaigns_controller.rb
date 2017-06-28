@@ -1,14 +1,13 @@
 class CampaignsController < ApplicationController
   layout "dashboard"
   
-
-  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy, :publish]
   before_action :set_select_collections, only: [:edit, :update, :new, :create]
   
   # GET /campaigns
   def index
     if current_user.admin
-      @campaigns = Campaign.all
+      @campaigns = Campaign.where.not(status: :draft)
     else
       @campaigns = current_user.campaigns
     end
@@ -24,7 +23,7 @@ class CampaignsController < ApplicationController
       flash[:notice] = "Please create a template first"  
       redirect_to new_template_path 
     elsif current_user.lists.length == 0
-      flash[:notice] = "Please create some listsfirst"  
+      flash[:notice] = "Please create some lists first"  
       redirect_to new_list_path 
     else
       @campaign = Campaign.new
@@ -41,7 +40,7 @@ class CampaignsController < ApplicationController
     @campaign.user_id = current_user.id if current_user
     @campaign.draft!
     if @campaign.save
-      redirect_to @campaign, notice: 'Campaign was successfully created.'
+      redirect_to @campaign, notice: 'Campaign created.'
     else
       render :new
     end
@@ -50,7 +49,7 @@ class CampaignsController < ApplicationController
   # PATCH/PUT /campaigns/1
   def update
     if @campaign.update(campaign_params)
-      redirect_to @campaign, notice: 'Campaign was successfully updated.'
+      redirect_to @campaign, notice: 'Campaign updated.'
     else
       render :edit
     end
@@ -59,7 +58,16 @@ class CampaignsController < ApplicationController
   # DELETE /campaigns/1
   def destroy
     @campaign.destroy
-    redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.'
+    redirect_to campaigns_url, notice: 'Campaign delted'
+  end
+
+  def publish
+    @campaign.recieved!
+    respond_to do |format|
+        format.js
+    end
+
+    
   end
 
   private

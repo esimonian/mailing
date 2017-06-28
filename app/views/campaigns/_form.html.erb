@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :campaign_title %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :description %>
     <%= form.text_field :description, id: :campaign_description %>
   </div>
@@ -26,14 +26,14 @@
           :name, :prompt => "Select a Template" %>
   </p>
   <p>
-    <label for="template_id">Please select a List </label><br>
+    <label for="list_id">Please select a List </label><br>
     <%= form.collection_check_boxes :list_ids, @lists, :id, 
-          :title, :prompt => "Select a List" %>
+          :title, :prompt => "Select a List", :wrapper => :inline_checkbox %>
   </p>
   
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button :submit, class: "waves-effect waves-light teal lighten-1" %>
   </div>
 <% end %>
