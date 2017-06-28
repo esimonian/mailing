@@ -42,4 +42,8 @@
           
 <br>
 
-<%= link_to 'New Campaign', new_campaign_path, class: "btn waves-effect waves-light teal lighten-1" %>
+
+<% unless current_user.admin %>
+  <%= link_to 'New Campaign', new_campaign_path, class: "btn waves-effect waves-light teal lighten-1" %>
+<% end %>
+
