@@ -4,4 +4,6 @@ class List < ApplicationRecord
 
   has_many :campaign_lists
   has_many :campaigns, through: :campaign_lists
+
+  
 end

@@ -3,8 +3,11 @@
   <div class="input-field">
     <%= f.input :title %>
   </div>
+  <label for="template_id">Please select a List </label><br>
+  <%= f.collection_check_boxes :contact_ids, @contacts, :id, 
+        :first_name, :prompt => "Select Contacts" %>
 
-  <%= f.association :contacts,
+  <%#= f.association :contact_ids,
                     as: :check_boxes,
                     label_method: :first_name,
                     :label => "Select some contacts",

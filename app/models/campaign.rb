@@ -7,5 +7,24 @@ class Campaign < ApplicationRecord
 
   validates_presence_of :user, :template_id, :title, :description
 
-  enum status: %w(draft published)
+  enum status: %w(draft sent recieved printing closed)
+
+
+# refactor this
+
+  def all_contacts
+    contacts  = []
+      lists.each do |list|
+        list.contacts.each do |contact|
+          contacts << contact
+        end
+    end
+    contacts
+  end
+
+  def to_csv
+    CSV.generate() do |csv|
+
+    end
+  end
 end

@@ -7,7 +7,11 @@ class CampaignsController < ApplicationController
   
   # GET /campaigns
   def index
-    @campaigns = Campaign.all
+    if current_user.admin
+      @campaigns = Campaign.all
+    else
+      @campaigns = current_user.campaigns
+    end
   end
 
   # GET /campaigns/1
@@ -16,7 +20,15 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    @campaign = Campaign.new
+    if current_user.templates.length == 0
+      flash[:notice] = "Please create a template first"  
+      redirect_to new_template_path 
+    elsif current_user.lists.length == 0
+      flash[:notice] = "Please create some listsfirst"  
+      redirect_to new_list_path 
+    else
+      @campaign = Campaign.new
+    end
   end
 
   # GET /campaigns/1/edit

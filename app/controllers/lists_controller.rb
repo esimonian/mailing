@@ -6,7 +6,11 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    if current_user.admin
+      @lists = List.all
+    else
+      @lists = current_user.lists
+    end
   end
 
   # GET /lists/1
@@ -17,7 +21,7 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   def new
-    if Contact.all.length == 0
+    if current_user.contacts.length == 0
       flash[:notice] = "Please add some contacts first"  
       redirect_to new_contact_path 
     else

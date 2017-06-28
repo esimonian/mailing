@@ -1,26 +1,5 @@
-<%= simple_form_for @contact do |f| %>
+<h1>Editing Contact</h1>
 
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email, as: :email %>
+<%= render 'form', contact: @contact %>
 
-  <div class="jt-address-autocomplete">
-    <!-- This field is used to search the address on Google Maps -->
-    <%= f.text_field :address, class: 'jt-address-search' %>
-
-    <!-- All fields are hidden because the javascript will set their value automatically -->
-    <% for attr in JT::Rails::Address.fields %>
-      <%= f.hidden_field "address_#{attr}", class: "jt-address-field-#{attr}" %>
-    <% end %>
-  </div>
-
-  <!-- Optional, if this field is true, the address will be remove -->
-  <%= f.check_box :address_destroy %>
-
-  <%= f.button :submit, class: "waves-effect waves-light teal lighten-1" %>
-
-<% end %>
-
-
-<!-- Load Google Maps and call googleMapInitialize when it's done -->
-<script async type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&callback=googleMapInitialize&key=<%= ENV['GOOGLE_KEY'] %>"></script>
+<%= link_to 'Back', contacts_path %>

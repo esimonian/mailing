@@ -7,19 +7,25 @@
       <th>Last Name</th>
       <th>Email</th>
       <th>Address</th>
+      <th>Edit</th>
     </tr>
   </thead>
   <tbody>
 
   <% @contacts.each do |contact| %>
-    <tr>
-      <td data-label="First Name"><%= best_in_place contact, :first_name, :as => :input %></td>
-      <td data-label="Last Name"><%= best_in_place contact, :last_name, :as => :input %></td>
-      <td data-label="Email"><%= best_in_place contact, :email, :as => :input %></td>
-      <td data-label="Address">
-        <%= contact.address_formatted_address %>
-      </td>
-    </tr>
+      <tr>
+        <td data-label="First Name"><%= best_in_place contact, :first_name, :as => :input %></td>
+        <td data-label="Last Name"><%= best_in_place contact, :last_name, :as => :input %></td>
+        <td data-label="Email"><%= best_in_place contact, :email, :as => :input %></td>
+        <td data-label="Address">
+          <%= contact.address_formatted_address %>
+        </td>
+        <td>
+          <%= link_to edit_contact_path(contact) do %>
+            <i class="material-icons teal-text lighten-1">mode_edit</i>
+          <% end %>
+        </td>
+      </tr>
   <% end %>
     
   </tbody>
@@ -32,5 +38,6 @@
 }.to_json do %>
 
 
-
-<%= link_to 'New contact', new_contact_path %>
+<p>
+  <%= link_to 'New contact', new_contact_path, class: "btn waves-effect waves-light teal lighten-1" %>
+</p>

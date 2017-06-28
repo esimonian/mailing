@@ -29,7 +29,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
-gem "paperclip"
+gem 'envyable'
+
 
 # Styling
 gem 'materialize-sass'
@@ -38,6 +39,7 @@ gem 'jquery-rails'
 # Forms
 gem 'simple_form'
 gem 'best_in_place'
+gem "paperclip"
 
 # Address fields
 gem 'jt-rails-address'

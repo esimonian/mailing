@@ -21,11 +21,12 @@
     <%= form.text_field :description, id: :campaign_description %>
   </div>
   <p>
-    <label for="template_id">Please select a template</label><br>
+    <label for="template_id">Please select a Template</label><br>
     <%= form.collection_radio_buttons :template_id, @templates, :id, 
           :name, :prompt => "Select a Template" %>
   </p>
   <p>
+    <label for="template_id">Please select a List </label><br>
     <%= form.collection_check_boxes :list_ids, @lists, :id, 
           :title, :prompt => "Select a List" %>
   </p>

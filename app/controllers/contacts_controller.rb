@@ -5,7 +5,11 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    if current_user.admin
+      @contacts = Contact.all
+    else
+      @contacts = current_user.contacts
+    end
   end
 
   # GET /contacts/1
@@ -29,7 +33,7 @@ class ContactsController < ApplicationController
     @contact.user_id = current_user.id if current_user
     respond_to do |format|
       if @contact.save!
-        format.html { redirect_to @contact, notice: 'contact was successfully created.' }
+        format.html { redirect_to contacts_url, notice: 'contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -43,7 +47,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'contact was successfully updated.' }
+        format.html { redirect_to contacts_url, notice: 'contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :edit }
@@ -89,6 +93,7 @@ class ContactsController < ApplicationController
                                     :address_country_code,
                                     :address_lat,
                                     :address_lng,
+                                    :address_destroy 
                                     )
     end
 end
