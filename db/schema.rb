@@ -69,10 +69,9 @@ ActiveRecord::Schema.define(version: 20170628192458) do
 
   create_table "lists", force: :cascade do |t|
     t.string "title"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "templates", force: :cascade do |t|
@@ -111,7 +110,6 @@ ActiveRecord::Schema.define(version: 20170628192458) do
 
   add_foreign_key "campaigns", "lists"
   add_foreign_key "campaigns", "templates"
-  add_foreign_key "campaigns", "users"
   add_foreign_key "contacts", "users"
   add_foreign_key "templates", "users"
 end
