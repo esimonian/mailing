@@ -20,6 +20,10 @@
 //= require turbolinks
 //= require_tree .
 
+document.addEventListener("turbolinks:load", function() {
+  $(".dropdown-button").dropdown();
+})
+
 // This function is call when Google Maps is loaded
 window.googleMapInitialize = function(){
 
